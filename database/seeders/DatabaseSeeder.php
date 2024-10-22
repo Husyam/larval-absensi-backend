@@ -31,5 +31,16 @@ class DatabaseSeeder extends Seeder
             'phone' => '0891232132',
             'role' => 'user',
         ]);
+
+        \App\Models\Company::create([
+            'name' => 'PT. Sejahtera',
+            'email' => 'sejatera@gmail.com',
+            'address' => 'Jl. Raya Kedung Baruk No. 1',
+            'latitude' => '-7.279421',
+            'longitude' => '112.732632',
+            'radius_km' => '1',
+            'time_in' => '08:00',
+            'time_out' => '17:00',
+        ]);
     }
 }
