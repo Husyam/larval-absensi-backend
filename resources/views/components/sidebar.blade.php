@@ -14,7 +14,6 @@
                     <li class='{{ Request::is('dashboard-general-dashboard') ? 'active' : '' }}'>
                         <a class="nav-link" href="{{ url('home') }}">General Dashboard</a>
                     </li>
-
                 </ul>
             </li>
 
@@ -23,6 +22,7 @@
                 <ul class="dropdown-menu">
                     <li>
                         <a class="nav-link" href="{{ route('users.index')}}">All Users</a>
+                        <a class="nav-link" href="{{ route('users.create')}}">Create Users</a>
                     </li>
 
                 </ul>
@@ -32,39 +32,32 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Company</span></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="nav-link" href="{{ route('companies.show', 1)}}">Company</a>
-                    </li>
-
-                </ul>
-            </li>
-            {{-- <li class="nav-item dropdown ">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Category</span></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="nav-link" href="{{ route('category.index') }}">All Category</a>
-                    </li>
-
-                </ul>
-
-            <li class="nav-item dropdown ">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Product</span></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="nav-link" href="{{ route('product.index') }}">All Product</a>
+                        <a class="nav-link" href="{{ route('companies.show', 1)}}">Profil Perusahaan</a>
                     </li>
 
                 </ul>
             </li>
 
             <li class="nav-item dropdown ">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Orders</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Attendance</span></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="nav-link" href="{{ route('order.index') }}">All Order</a>
+                        <a class="nav-link" href="{{ route('attendances.index', 1)}}">Attendance</a>
                     </li>
 
                 </ul>
-            </li> --}}
+            </li>
+
+            <li class="nav-item dropdown ">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Permission</span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="nav-link" href="{{ route('permissions-absensi.index', 1)}}">Permission</a>
+                    </li>
+
+                </ul>
+            </li>
+
 
     </aside>
 </div>

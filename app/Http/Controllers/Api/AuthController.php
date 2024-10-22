@@ -37,44 +37,27 @@ class AuthController extends Controller
         return response(['message' => 'Logout success'], 200);
     }
 
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    //update image profile & face_embedding
+    public function updateProfile(Request $request, User $user)
     {
-        //
-    }
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'face_embedding' => 'required',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $user = $request->user();
+        $image = $request->file('image');
+        $face_embedding = $request->face_embedding;
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        //save image
+        $image->storeAs('public/images', $image->hashName());
+        $user->image_url = $image->hashName();
+        $user->face_embedding = $face_embedding;
+        $user->save();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return response()->json([
+            'message' => 'User updated successfully',
+            'user' => $user,
+        ]);
     }
 }
