@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionAbsenController;
 
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+
 
 Route::get('/', function () {
     return view('pages.auth.auth-login');
@@ -20,4 +23,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('companies', CompanyController::class);
     Route::resource('attendances', AttendanceController::class);
     Route::resource('permissions-absensi', PermissionAbsenController::class);
+
+    //permissions
+    Route::resource('permissions', PermissionController::class);
+
+    //roles
+    Route::resource('roles', RoleController::class);
 });

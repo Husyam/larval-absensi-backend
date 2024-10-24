@@ -5,8 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
 
-class AttendanceController extends Controller
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+
+class AttendanceController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:view attendances', only: ['index']),
+            // new Middleware('permission:edit attendance', only: ['edit']),
+            // new Middleware('permission:create attendance', only: ['create']),
+            // new Middleware('permission:delete attendance', only: ['destroy']),
+        ];
+    }
+
     //index
     public function index(Request $request)
     {
@@ -16,7 +29,7 @@ class AttendanceController extends Controller
                     $query->where('name', 'like', '%' . $name . '%');
                 });
             })->orderBy('id', 'desc')->paginate(10);
-        return view('pages.absensi.index', compact('attendances'));
+        return view('pages.attendance.index', compact('attendances'));
     }
 
     //create

@@ -91,6 +91,13 @@
 
                                                 <td>
                                                     <div class="d-flex justify-content-center">
+                                                        {{-- @can('edit permissions')
+                                                            <a href='{{ route('permissions-absensi.edit', $permission->id) }}'
+                                                                class="btn btn-sm btn-info btn-icon">
+                                                                <i class="fas fa-edit"></i>
+                                                                Detail
+                                                            </a>
+                                                        @endcan --}}
                                                         <a href='{{ route('permissions-absensi.show', $permission->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>

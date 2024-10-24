@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
             'phone' => '089634134984',
-            'role' => 'admin',
+            // 'role' => 'admin',
         ]);
 
         User::factory()->create([
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@gmail.com',
             'password' => Hash::make('password'),
             'phone' => '0891232132',
-            'role' => 'user',
+            // 'role' => 'user',
         ]);
 
         \App\Models\Company::create([

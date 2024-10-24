@@ -5,8 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Company;
 
-class CompanyController extends Controller
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+
+class CompanyController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:view company', only: ['index']),
+            new Middleware('permission:edit company', only: ['edit']),
+            new Middleware('permission:create company', only: ['create']),
+            new Middleware('permission:delete company', only: ['destroy']),
+        ];
+    }
+
     public function show() {
         $company = Company::find(1);
         return view('pages.company.show', compact('company'));

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
@@ -16,19 +17,31 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
+        // Mencari pengguna berdasarkan email
         $user = User::where('email', $loginData['email'])->first();
 
-        if(!$user) {
+        // Memeriksa apakah pengguna ada
+        if (!$user) {
             return response(['message' => 'Invalid credentials'], 401);
         }
 
-        if(!Hash::check($loginData['password'], $user->password)) {
+        // Memeriksa apakah password cocok
+        if (!Hash::check($loginData['password'], $user->password)) {
             return response(['message' => 'Invalid credentials'], 401);
         }
 
+        // Membuat token untuk pengguna
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response(['user' => $user, 'token' => $token], 200);
+        // Mengambil roles pengguna
+        $roles = $user->getRoleNames();
+
+        // Mengembalikan respons hanya dengan roles
+        return response([
+            'user' => $user,
+            'token' => $token,
+            'roles' => $roles,
+        ], 200);
     }
 
     public function logout(Request $request) {
@@ -46,6 +59,7 @@ class AuthController extends Controller
         ]);
 
         $user = $request->user();
+        $roles = $user->getRoleNames();
         $image = $request->file('image');
         $face_embedding = $request->face_embedding;
 
@@ -58,6 +72,19 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'User updated successfully',
             'user' => $user,
+            'roles' => $roles,
+        ]);
+    }
+
+    //get user
+    public function getUser(Request $request)
+    {
+        $user = $request->user();
+        $roles = $user->getRoleNames();
+
+        return response()->json([
+            'user' => $user,
+            'roles' => $roles,
         ]);
     }
 }

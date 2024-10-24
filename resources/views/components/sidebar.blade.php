@@ -17,46 +17,68 @@
                 </ul>
             </li>
 
-            <li class="nav-item dropdown ">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Users</span></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="nav-link" href="{{ route('users.index')}}">All Users</a>
-                        <a class="nav-link" href="{{ route('users.create')}}">Create Users</a>
-                    </li>
+            @can('view permissions')
+                <li class="nav-item dropdown ">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Roles and Permission aplikasi</span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="nav-link" href="{{ route('permissions.index')}}">Permission</a>
+                            <a class="nav-link" href="{{ route('roles.index')}}">Roles</a>
+                        </li>
 
-                </ul>
-            </li>
+                    </ul>
+                </li>
+            @endcan
 
-            <li class="nav-item dropdown ">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Company</span></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="nav-link" href="{{ route('companies.show', 1)}}">Profil Perusahaan</a>
-                    </li>
+            @can('view users')
+                <li class="nav-item dropdown ">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Users</span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="nav-link" href="{{ route('users.index')}}">All Users</a>
+                            <a class="nav-link" href="{{ route('users.create')}}">Create Users</a>
+                        </li>
 
-                </ul>
-            </li>
+                    </ul>
+                </li>
+            @endcan
 
-            <li class="nav-item dropdown ">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Attendance</span></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="nav-link" href="{{ route('attendances.index', 1)}}">Attendance</a>
-                    </li>
+            @can('view company')
+                <li class="nav-item dropdown ">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Company</span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="nav-link" href="{{ route('companies.show', 1)}}">Profil Perusahaan</a>
+                        </li>
 
-                </ul>
-            </li>
+                    </ul>
+                </li>
+            @endcan
 
-            <li class="nav-item dropdown ">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Permission</span></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="nav-link" href="{{ route('permissions-absensi.index', 1)}}">Permission</a>
-                    </li>
+            @can('view attendances')
+                <li class="nav-item dropdown ">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Attendance</span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="nav-link" href="{{ route('attendances.index', 1)}}">Attendance</a>
+                        </li>
 
-                </ul>
-            </li>
+                    </ul>
+                </li>
+            @endcan
+
+            @can('view izin')
+                <li class="nav-item dropdown ">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Izin atau cuti</span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="nav-link" href="{{ route('permissions-absensi.index', 1)}}">Izin atau cuti</a>
+                        </li>
+
+                    </ul>
+                </li>
+            @endcan
+
 
 
     </aside>

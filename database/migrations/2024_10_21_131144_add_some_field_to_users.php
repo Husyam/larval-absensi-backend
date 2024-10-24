@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('position')->after('role')->nullable();
+            $table->string('position')->after('phone')->nullable();
             $table->string('department')->after('position')->nullable();
             $table->text('face_embedding')->after('department')->nullable();
             $table->string('image_url')->after('face_embedding')->nullable();

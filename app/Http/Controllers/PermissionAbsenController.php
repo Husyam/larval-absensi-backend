@@ -24,7 +24,7 @@ class PermissionAbsenController extends Controller
     public function create()
     {
 
-        return view('pages.permission-absen.index', compact('permission_absen'));
+        //return view('pages.permission-absen.index', compact('permission_absen'));
     }
 
     //store
@@ -33,8 +33,6 @@ class PermissionAbsenController extends Controller
         //
     }
 
-    //show
-    //show
     public function show($id)
     {
         $permission_absen = Permission::with('user')->find($id);

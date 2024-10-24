@@ -71,8 +71,12 @@
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <a href="{{ route('companies.edit', $company->id) }}" class="btn btn-primary">Edit Profil
-                                    Perusahaan</a>
+                                @can('edit company')
+                                    <a href="{{ route('companies.edit', $company->id) }}" class="btn btn-primary">Edit Profil
+                                        Perusahaan</a>
+                                @endcan
+                                {{-- <a href="{{ route('companies.edit', $company->id) }}" class="btn btn-primary">Edit Profil
+                                    Perusahaan</a> --}}
                             </div>
                         </div>
                     </div>

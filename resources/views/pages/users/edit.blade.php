@@ -26,11 +26,8 @@
 
             <div class="section-body">
                 <h2 class="section-title">Users</h2>
-
-
-
                 <div class="card">
-                    <form action="{{ route('users.update', $user) }}" method="POST">
+                    <form action="{{ route('users.update', $user->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card-header">
@@ -115,23 +112,17 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Roles</label>
-                                <div class="selectgroup w-100">
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="admin" class="selectgroup-input"
-                                            @if ($user->role == 'admin') checked @endif>
-                                        <span class="selectgroup-button">Admin</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="supervisor" class="selectgroup-input"
-                                            @if ($user->role == 'supervisor') checked @endif>
-                                        <span class="selectgroup-button">Supervisor</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="staff" class="selectgroup-input"
-                                            @if ($user->role == 'staff') checked @endif>
-                                        <span class="selectgroup-button">Staff</span>
-                                    </label>
-
+                                <div class="row col-row-2">
+                                    @if ($roles->isNotEmpty())
+                                        @foreach ($roles as $role)
+                                            <div class="custom-control custom-checkbox ml-2">
+                                                {{--  --}}
+                                                <input {{ ($hasRoles->contains($role->id)) ? 'checked' : '' }} type="checkbox" class="custom-control-input" id="role-{{ $role->id }}"
+                                                    name="role[]" value="{{ $role->name }}">
+                                                <label class="custom-control-label" for="role-{{ $role->id }}">{{ $role->name }}</label>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>

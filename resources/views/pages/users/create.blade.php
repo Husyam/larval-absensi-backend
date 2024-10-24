@@ -115,20 +115,16 @@
                             <div class="form-group">
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="admin" class="selectgroup-input"
-                                            checked="">
-                                        <span class="selectgroup-button">Admin</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="supervisor" class="selectgroup-input">
-                                        <span class="selectgroup-button">Supervisor</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="role" value="staff" class="selectgroup-input">
-                                        <span class="selectgroup-button">Staff</span>
-                                    </label>
-
+                                    @if ($roles->isNotEmpty())
+                                        @foreach ($roles as $role)
+                                            <div class="custom-control custom-checkbox">
+                                                {{-- {{ ($hasRoles->contains($role->id)) ? 'checked' : '' }}  --}}
+                                                <input type="checkbox" class="custom-control-input" id="role-{{ $role->id }}"
+                                                    name="role[]" value="{{ $role->name }}">
+                                                <label class="custom-control-label" for="role-{{ $role->id }}">{{ $role->name }}</label>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
