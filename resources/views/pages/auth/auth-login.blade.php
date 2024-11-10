@@ -37,7 +37,7 @@
                             alt="logo"
                             width="80"
                             class="shadow-light rounded-circle mb-5 mt-2">
-                        <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Stisla</span>
+                        <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Aplikasi Absensi</span>
                         </h4>
                         <p class="text-muted">Before you get started, you must login or register if you don't already
                             have an account.</p>
@@ -89,10 +89,10 @@
                             </div>
 
                             <div class="form-group text-right">
-                                <a href="auth-forgot-password.html"
+                                {{-- <a href="auth-forgot-password.html"
                                     class="float-left mt-3">
                                     Forgot Password?
-                                </a>
+                                </a> --}}
                                 <button type="submit"
                                     class="btn btn-primary btn-lg btn-icon icon-right"
                                     tabindex="4">
@@ -100,9 +100,7 @@
                                 </button>
                             </div>
 
-                            <div class="mt-5 text-center">
-                                Don't have an account? <a href="auth-register.html">Create new one</a>
-                            </div>
+
                         </form>
 
                         <div class="text-small mt-5 text-center">
@@ -120,8 +118,17 @@
                     <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
                             <div class="mb-5 pb-3">
-                                <h1 class="display-4 font-weight-bold mb-2">Good Morning</h1>
-                                <h5 class="font-weight-normal text-muted-transparent">Bali, Indonesia</h5>
+                                <h1 class="display-4 font-weight-bold mb-2" id="greeting">
+                                </h1>
+                                <div class="time-container font-weight-bold">
+                                    <img id="clockImage" class="clock-image" src="" alt="waktu" width="50px">
+                                    <span>Pukul :</span>
+                                    <span id="hours">00</span>:
+                                    <span id="minutes">00</span>:
+                                    <span id="seconds">00</span>
+                                    <span>wib</span>
+
+                                </div>
                             </div>
                             Photo by <a class="text-light bb"
                                 target="_blank"
@@ -152,6 +159,7 @@
     <!-- Template JS File -->
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+
 </body>
 
 </html>

@@ -89,20 +89,25 @@
                                                     <td>{{ $user->created_at }}</td>
                                                     <td>
                                                         <div class="d-flex justify-content-center">
-                                                            <a href='{{ route('users.edit', $user->id) }}'
-                                                                class="btn btn-sm btn-info btn-icon">
-                                                                <i class="fas fa-edit"></i>
-                                                                Edit
-                                                            </a>
 
-                                                            <form action="{{ route('users.destroy', $user->id) }}"
-                                                                method="POST" class="ml-2 delete-form">
-                                                              @csrf
-                                                              @method('DELETE')
-                                                              <button type="button" class="btn btn-sm btn-danger btn-icon confirm-delete">
-                                                                  <i class="fas fa-times"></i> Delete
-                                                              </button>
-                                                          </form>
+                                                            @can('edit users')
+                                                                <a href='{{ route('users.edit', $user->id) }}'
+                                                                    class="btn btn-sm btn-info btn-icon">
+                                                                    <i class="fas fa-edit"></i>
+                                                                    Edit
+                                                                </a>
+                                                            @endcan
+
+                                                            @can('delete users')
+                                                                <form action="{{ route('users.destroy', $user->id) }}"
+                                                                    method="POST" class="ml-2 delete-form">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="button" class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                                    <i class="fas fa-times"></i> Delete
+                                                                </button>
+                                                            </form>
+                                                            @endcan
                                                         </div>
                                                     </td>
                                                 </tr>

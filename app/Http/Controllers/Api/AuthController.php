@@ -77,14 +77,18 @@ class AuthController extends Controller
     }
 
     //get user
-    public function getUser(Request $request)
+    public function getUser (Request $request)
     {
         $user = $request->user();
-        $roles = $user->getRoleNames();
+        $roles = $user->getRoleNames(); // Mendapatkan nama-nama role
+
+
+        // $user->roles = $roles; get item name from roles
+        $user->roles = $roles;
+
 
         return response()->json([
             'user' => $user,
-            'roles' => $roles,
         ]);
     }
 }
